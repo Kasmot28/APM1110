@@ -1,0 +1,75 @@
+---
+title: "FA2 (PROBABILITY & PROBABILITY DISTRIBUTIONS"
+author: "QUINTERO"
+date: "2024-02-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Use R to illustrate that the probability of getting:
+(a) a head is 0.5 if a fair coin is tossed repeatedly;
+
+```{r}
+Coinflip = function(x) sample(0:1,x,rep=T)
+total=Coinflip(10)
+total
+
+#estimation (TAILS)
+sum (total == 0)/10
+#estimation (HEADS)
+sum (total == 1)/10
+```
+
+(b) a red card is 0.5 if cards are drawn repeatedly with replacement from awell-shuffled deck;
+
+```{r}
+Cardflip = function(x) sample(1:52,x,rep=T)
+total=Cardflip(52)
+total
+
+#estimation (RED)
+sum (total >= 26)/52
+#estimation (BLACK)
+sum (total < 26)/52
+
+```
+
+(c) an even number is 0.5 if a fair die is rolled repeatedly.
+
+```{r}
+sample(1:6,6,rep=T)
+dieroll = function(x) sample(1:6,x,rep=T)
+total=dieroll(6)
+total
+
+#estimation (EVEN)
+sum1 <- sum(total == 2)/6
+sum2 <-  sum(total == 4)/6
+sum3 <- sum(total == 6)/6
+sum4 <- sum1 + sum2 + sum3
+sum4
+
+#estimation (ODD)
+sum5 <- sum(total == 1)/6
+sum6 <- sum(total == 3)/6
+sum7 <- sum(total == 5)/6
+sum8 <- sum5 + sum6 + sum7
+sum8
+
+```
+
+## 2. An experiment consists of tossing two fair coins. Use R to simulate this experiment 100 times and obtain the relative frequency of each possible outcome. Hence, estimate the probability of getting one head and one tail in any order.
+
+```{r}
+Coinflip = function(x) sample(0:1,x,rep=T)
+total=Coinflip(100)
+total
+
+#estimation (TAILS)
+sum (total == 0)/100
+#estimation (HEADS)
+sum (total == 1)/100
+```
